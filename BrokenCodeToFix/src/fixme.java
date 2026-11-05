@@ -1,13 +1,9 @@
 //This should be able to solve J3 as seen in Instructions.pdf.
-
-
 import java.util.Scanner;
 /**
  *
  * @author SPH_SHSM
  */
-
-
 public class fixme {
 public static void main(String[] args) {
 Scanner in = new Scanner(System.in);
@@ -26,21 +22,21 @@ Scanner in = new Scanner(System.in);
  char previousChar = 0;
  for (int j = 0; j < input.length(); j++) {
        //if this is the first pass through the loop
- 			if (j==0){
+ 			if (j==1){
                     //current char is the char at j
- 		currentChar = input.charAt(j);
+ 		currentChar = input.charAt(i);
                     //current count = 1
  		currentCount = 1;
  					}
                 //else
-                else  {
+                   else  {
                     //set previousChar to currentChar
                     previousChar = currentChar;
                     //current character = charAt(i)
                     currentChar = input.charAt(j);
                     //if the current and previous char are the same
                 } 
- 			       if(currentChar == previousChar){
+ 			        if(currentChar == previousChar){
 
                         //increase the count
                       currentCount++;
@@ -50,24 +46,19 @@ Scanner in = new Scanner(System.in);
                         //print current count + " " + previousChar
                         output+= currentCount + " " +previousChar+" ";
                         //currentCount = 1
-                        currentCount=1;
+                        currentCount = 1;
                     }
                     //If we're on the last character
                     if (j==input.length()-1){
                     	//add the count to the output
                         output+= currentCount + " " +currentChar+" ";
                     }
-                    
                 }
               output+="\n";
             }
             //Print newline
-           
             System.out.println(output);
             in.close();
         }
         //Print the result
-     
-    
 }
-    
