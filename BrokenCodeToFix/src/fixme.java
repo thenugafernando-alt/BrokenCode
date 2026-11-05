@@ -10,7 +10,7 @@ Scanner in = new Scanner(System.in);
 //Read in a number
   int lines = in.nextInt();
   in.nextLine();
-  String output="";
+  String output = "";
         //Loop through the lines
      for (int i = 0; i < lines; i++) {
             //Read in a string
@@ -22,9 +22,9 @@ Scanner in = new Scanner(System.in);
  char previousChar = 0;
  for (int j = 0; j < input.length(); j++) {
        //if this is the first pass through the loop
- 			if (j==1){
+ 			if (j==0){
                     //current char is the char at j
- 		currentChar = input.charAt(i);
+ 		currentChar = input.charAt(j);
                     //current count = 1
  		currentCount = 1;
  					}
