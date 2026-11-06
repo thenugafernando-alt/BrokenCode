@@ -1,64 +1,55 @@
 //This should be able to solve J3 as seen in Instructions.pdf.
 import java.util.Scanner;
+
 /**
  *
  * @author SPH_SHSM
  */
 public class fixme {
-public static void main(String[] args) {
-Scanner in = new Scanner(System.in);
-//Read in a number
-  int lines = in.nextInt();
-  in.nextLine();
-  String output = "";
-        //Loop through the lines
-     for (int i = 0; i < lines; i++) {
-            //Read in a string
- String input = in.nextLine();
-            //Loop through the characters
- 
- char currentChar ='a';
- Integer currentCount = 0;
- char previousChar = 0;
- for (int j = 0; j < input.length(); j++) {
-       //if this is the first pass through the loop
- 			if (j==0){
-                    //current char is the char at j
- 		currentChar = input.charAt(j);
-                    //current count = 1
- 		currentCount = 1;
- 					}
-                //else
-                   else  {
-                    //set previousChar to currentChar
-                    previousChar = currentChar;
-                    //current character = charAt(i)
-                    currentChar = input.charAt(j);
-                    //if the current and previous char are the same
-                } 
- 			        if(currentChar == previousChar){
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
 
-                        //increase the count
-                      currentCount++;
-                    }
-                    //else
-                    else {
-                        //print current count + " " + previousChar
-                        output+= currentCount + " " +previousChar+" ";
-                        //currentCount = 1
-                        currentCount = 1;
-                    }
-                    //If we're on the last character
-                    if (j==input.length()-1){
-                    	//add the count to the output
-                        output+= currentCount + " " +currentChar+" ";
-                    }
-                }
-              output+="\n";
+        // Read in a number
+        int lines = in.nextInt();
+        in.nextLine();
+
+        StringBuilder output = new StringBuilder();
+
+        // Loop through the lines
+        for (int i = 0; i < lines; i++) {
+            String input = in.nextLine();
+            if (input.isEmpty()) {
+                output.append("\n");
+                continue;
             }
-            //Print newline
-            System.out.println(output);
-            in.close();
+
+            char previousChar = input.charAt(0);
+            int currentCount = 1;
+            StringBuilder line = new StringBuilder();
+
+            for (int j = 1; j < input.length(); j++) {
+                char currentChar = input.charAt(j);
+
+                if (currentChar == previousChar) {
+                    currentCount++;
+                } else {
+                    if (line.length() > 0) {
+                        line.append(" ");
+                    }
+                    line.append(currentCount).append(" ").append(previousChar);
+                    previousChar = currentChar;
+                    currentCount = 1;
+                }
+            }
+
+            if (line.length() > 0) {
+                line.append(" ");
+            }
+            line.append(currentCount).append(" ").append(previousChar);
+            output.append(line).append("\n");
         }
-        //Print the result
+
+        System.out.print(output.toString());
+        in.close();
+    }
 }
